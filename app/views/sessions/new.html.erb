@@ -1,0 +1,20 @@
+new session
+
+<form action="<%= session_url %>" method="post">
+    <%= authorize_form %>
+    <input 
+        type="text"
+        placeholder="User Name"
+        name="user[name]"
+        value="<%= @user.name %>">
+
+    <input 
+        type="password"
+        placeholder="Password"
+        name="user[password]"
+        value="<%= @user.password %>">
+
+    <input 
+        type="submit"
+        value="Sign In">
+</form>

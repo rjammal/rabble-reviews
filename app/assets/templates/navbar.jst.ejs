@@ -1,0 +1,6 @@
+<% if (RabbleReviews.currentUser) { %>
+    Logged in as <%= RabbleReviews.currentUser.name %>
+    <a href="#logout">Sign Out</a>
+<% } else { %>
+    <a href="#">Sign In</a> <a href="#users/new">Sign Up</a>
+<% } %>

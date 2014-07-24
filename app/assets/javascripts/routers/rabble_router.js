@@ -45,13 +45,15 @@ RabbleReviews.Routers.RabbleRouter = Backbone.Router.extend({
 
     // temporarily add html here since ejs templates do not seem to work outside of views
     navbar: function () {
-        if (RabbleReviews.currentUser) {
-            var text = 'Logged in as ' + RabbleReviews.currentUser.name;
-            text +=' <a href="#logout">Sign Out</a>';
-            return text;
-        } else {
-            var text = '<a href="#">Sign In</a> <a href="#users/new">Sign Up</a>';
-            return text;
-        }
+        // if (RabbleReviews.currentUser) {
+        //     var text = 'Logged in as ' + RabbleReviews.currentUser.name;
+        //     text +=' <a href="#logout">Sign Out</a>';
+        //     return text;
+        // } else {
+        //     var text = '<a href="#">Sign In</a> <a href="#users/new">Sign Up</a>';
+        //     return text;
+        // }
+        //debugger
+        return JST["navbar"]({ currentUser: RabbleReviews.currentUser });
     }
 });

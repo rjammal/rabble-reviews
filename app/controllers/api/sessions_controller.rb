@@ -1,5 +1,7 @@
 class Api::SessionsController < ApplicationController
 
+  wrap_parameters include: [:name, :password]
+
   def create
     @user = User.find_by_credentials(user_params[:name], user_params[:password])
     if @user

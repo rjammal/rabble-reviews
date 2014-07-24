@@ -1,28 +1,46 @@
-<div class="errors"></div>
+<div class="row">
 
-<form>
-    <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="User Name"
-        value="<%= user.name %>">
+<div class="col-sm-4 col-sm-offset-4">
 
-    <input 
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Password"
-        value="">
+    <h2><%= buttonText %></h2>
 
-    <% if (button_text === "Sign Up") { %>
+    <div class="errors"></div>
+
+    <form>
+        <div class="form-group">
+        <input
+            type="text"
+            id="name"
+            class="form-control"
+            name="name"
+            placeholder="User Name"
+            value="<%= user.name %>">
+        </div>
+
+        <div class="form-group">
         <input 
             type="password"
-            id="password2"
-            placeholder="Type your password again"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Password"
             value="">
-    <% } %>
+        </div>
 
-    <button><%= button_text %></button>
+        <% if (buttonText === "Sign Up") { %>
+            <div class="form-group">
+            <input 
+                type="password"
+                class="form-control"
+                id="password2"
+                placeholder="Type your password again"
+                value="">
+            </div>
+        <% } %>
 
-</form>
+        <button class="btn btn-primary btn-block"><%= buttonText %></button>
+
+    </form>
+
+</div>
+</div>

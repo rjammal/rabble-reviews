@@ -14,9 +14,8 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require bootstrap
 //= require rabble_reviews
-// require serializeJSON
-// require bootstrap
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models

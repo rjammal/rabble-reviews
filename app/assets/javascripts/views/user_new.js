@@ -11,15 +11,16 @@ RabbleReviews.Views.UserNew = Backbone.FormView.extend({
         "click form button": "signup"
     },
 
-    signup: function () {
-        var name = $el.$("#name").val();
-        var password = $el.$("#password").val();
+    signup: function (event) {
+        event.preventDefault();
+        var name = this.$("#name").val();
+        var password = this.$("#password").val();
         this.model.set("name", name);
         this.model.set("password", password);
         var view = this;
         this.model.save({
             success: function () {
-                Backbone.history.navigate("games");
+                Backbone.history.navigate("games", { trigger: true });
             }, 
             error: function (model, response) {
                 view.handleErrors(model, response);

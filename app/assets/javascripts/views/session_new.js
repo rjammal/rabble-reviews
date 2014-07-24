@@ -14,15 +14,18 @@ RabbleReviews.Views.SessionNew = Backbone.FormView.extend({
         "click form button": "login"
     }, 
 
-    login: function () {
-        var name = $el.$("#name").val();
-        var password = $el.$("#password").val();
+    login: function (event) {
+        event.preventDefault();
+        var name = this.$("#name").val();
+        var password = this.$("#password").val();
         this.model.set("name", name);
         this.model.set("password", password);
         var view = this;
-        this.model.save({
+        this.model.save({}, {
             success: function () {
-                Backbone.history.navigate("games");
+                //var view = RabbleReviews.Views.GameIndex();
+
+                Backbone.history.navigate("games", { trigger: true });
             }, 
             error: function (model, response) {
                 view.handleErrors(model, response);

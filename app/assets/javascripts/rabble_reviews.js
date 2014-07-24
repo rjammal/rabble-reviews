@@ -1,13 +1,13 @@
-RabbleReviews = {
+window.RabbleReviews = {
     Views: {}, 
     Models: {}, 
     Collections: {},
-    Routers = {}, 
+    Routers: {}, 
 
     initialize: function () { 
-        this.games = new RabbleReviews.Models.Games();
+        this.games = new RabbleReviews.Collections.Games();
         this.games.fetch();
-        new this.Routers.RabbleRouter({ $rootEl: $('#content')})
+        new this.Routers.RabbleRouter({ $rootEl: $('#content')});
         Backbone.history.start();
     }
 };

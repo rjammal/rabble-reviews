@@ -11,25 +11,25 @@ RabbleReviews.Routers.RabbleRouter = Backbone.Router.extend({
     }, 
 
     sessionNew: function () {
-        var session = new RabbleRouter.Models.Session();
-        var view = new RabbleRouter.Views.SessionNew({ model: session });
+        var session = new RabbleReviews.Models.Session();
+        var view = new RabbleReviews.Views.SessionNew({ model: session });
         this._swapView(view);
     }, 
 
     userNew: function () {
-        var user = new RabbleRouter.Models.User();
-        var view = new RabbleRouter.Views.SessionNew({ model: user });
+        var user = new RabbleReviews.Models.User();
+        var view = new RabbleReviews.Views.SessionNew({ model: user });
         this._swapView(view);
     }, 
 
     gamesIndex: function () {
-        var view = new RabbleRouter.Views.GameIndex({ collection: RabbleRouter.games });
+        var view = new RabbleReviews.Views.GameIndex({ collection: RabbleReviews.games });
         this._swapView(view);
     }, 
 
     _swapView: function (view) {
         this.currentView && this.currentView.remove(); 
         this.currentView = view;
-        this.$rootEl.html(view.render());
+        this.$rootEl.html(view.render().$el);
     }
 });

@@ -22,7 +22,7 @@ RabbleReviews.Routers.RabbleRouter = Backbone.Router.extend({
         var session = new RabbleReviews.Models.Session({ id: 0 });
         session.destroy();
         delete RabbleReviews.currentUser;
-        this.sessionNew();
+        Backbone.history.navigate("#", { trigger: true });
     },
 
     userNew: function () {
@@ -43,17 +43,7 @@ RabbleReviews.Routers.RabbleRouter = Backbone.Router.extend({
         this.$navbar.html(this.navbar());
     }, 
 
-    // temporarily add html here since ejs templates do not seem to work outside of views
     navbar: function () {
-        // if (RabbleReviews.currentUser) {
-        //     var text = 'Logged in as ' + RabbleReviews.currentUser.name;
-        //     text +=' <a href="#logout">Sign Out</a>';
-        //     return text;
-        // } else {
-        //     var text = '<a href="#">Sign In</a> <a href="#users/new">Sign Up</a>';
-        //     return text;
-        // }
-        //debugger
         return JST["navbar"]({ currentUser: RabbleReviews.currentUser });
     }
 });

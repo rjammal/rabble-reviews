@@ -22,9 +22,11 @@ RabbleReviews.Views.SessionNew = Backbone.FormView.extend({
         this.model.set("password", password);
         var view = this;
         this.model.save({}, {
-            success: function () {
-                //var view = RabbleReviews.Views.GameIndex();
-
+            success: function (model) {
+                RabbleReviews.currentUser = {
+                    id: model.escape("id"), 
+                    name: model.escape("name")
+                };
                 Backbone.history.navigate("games", { trigger: true });
             }, 
             error: function (model, response) {

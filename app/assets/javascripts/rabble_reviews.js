@@ -7,7 +7,10 @@ window.RabbleReviews = {
     initialize: function () { 
         this.games = new RabbleReviews.Collections.Games();
         this.games.fetch();
-        new this.Routers.RabbleRouter({ $rootEl: $('#content')});
+        new this.Routers.RabbleRouter({ 
+            $rootEl: $('#content'), 
+            $navbar: $('#main-navbar')
+        });
         Backbone.history.start();
     }
 };

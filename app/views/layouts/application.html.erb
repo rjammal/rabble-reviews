@@ -8,13 +8,6 @@
 </head>
 <body>
 
-<% if logged_in? %>
-    Logged in as <%= current_user.name %>
-    <%= button_to "Sign Out", api_session_url, method: :delete %>
-<% else %>
-    <%= link_to "Sign In", new_api_session_url %> <%= link_to "Sign Up", new_api_user_url %>
-<% end %>
-
 <%= yield %>
 
 </body>

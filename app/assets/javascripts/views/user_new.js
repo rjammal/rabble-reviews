@@ -18,8 +18,12 @@ RabbleReviews.Views.UserNew = Backbone.FormView.extend({
         this.model.set("name", name);
         this.model.set("password", password);
         var view = this;
-        this.model.save({
-            success: function () {
+        this.model.save({}, {
+            success: function (model) {
+                RabbleReviews.currentUser = {
+                    id: model.escape("id"), 
+                    name: model.escape("name")
+                };
                 Backbone.history.navigate("games", { trigger: true });
             }, 
             error: function (model, response) {

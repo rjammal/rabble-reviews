@@ -14,4 +14,10 @@
 
 class Game < ActiveRecord::Base
 
+  validates :name, :game_type, presence: true
+  validates :type, inclusion: { in: ["video", "board"] }
+
+  has_many :game_genres
+  has_many :genres, through: :game_genres, source: :genres
+
 end

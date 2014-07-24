@@ -8,12 +8,23 @@ class Api::GamesController < ApplicationController
   end
 
   def create
+    # convert genre names to genre objects
+    if game_params[:genres]
+      game_params[:genres].map! do |name| 
+        Genre.find_by_name(name)
+      end
+    end
     game = Game.new(game_params)
     if game.save 
       render json: game
     else
       render json: game.errors.full_messages
     end
+  end
+
+  def show
+    game = Game.find(params[:id])
+    render json: game
   end
 
   private

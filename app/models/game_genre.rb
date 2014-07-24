@@ -13,7 +13,7 @@ class GameGenre < ActiveRecord::Base
   
   validates :game_id, :genre_id, presence: true
 
-  belongs_to :games
-  belongs_to :genres
+  belongs_to :game
+  belongs_to :genre
 
 end

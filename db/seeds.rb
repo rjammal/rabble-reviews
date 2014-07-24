@@ -6,5 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 ActiveRecord::Base.transaction do 
-  
+  Genre.create!(name: "rpg")
+  Genre.create!(name: "shooter")
+  Genre.create!(name: "strategy")
+  Genre.create!(name: "cooperative")
+  Genre.create!(name: "puzzle")
+  Genre.create!(name: "party game")
 end

@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723202904) do
+ActiveRecord::Schema.define(version: 20140724212422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "game_genres", force: true do |t|
+    t.integer  "game_id",    null: false
+    t.integer  "genre_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "game_genres", ["game_id"], name: "index_game_genres_on_game_id", using: :btree
+  add_index "game_genres", ["genre_id", "game_id"], name: "index_game_genres_on_genre_id_and_game_id", unique: true, using: :btree
+  add_index "game_genres", ["genre_id"], name: "index_game_genres_on_genre_id", using: :btree
 
   create_table "games", force: true do |t|
     t.string   "name",          null: false
@@ -31,6 +42,12 @@ ActiveRecord::Schema.define(version: 20140723202904) do
   add_index "games", ["name"], name: "index_games_on_name", using: :btree
   add_index "games", ["type"], name: "index_games_on_type", using: :btree
   add_index "games", ["year_released"], name: "index_games_on_year_released", using: :btree
+
+  create_table "genres", force: true do |t|
+    t.text     "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "reviews", force: true do |t|
     t.integer  "author_id",  null: false

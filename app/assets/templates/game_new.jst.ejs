@@ -1,0 +1,106 @@
+<h2 class="col-sm-6 col-sm-offset-3">Add a New Game</h2>
+
+<div class="errors"></div>
+
+<form class="col-sm-6 col-sm-offset-3">
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label for="name">Name</label>
+            <input 
+                type="text"
+                class="form-control"
+                id="name"
+                name="name">
+        </div>
+        
+        <div class="form-group col-sm-6">
+            <label for="type">Type</label>
+            <select 
+                class="form-control"
+                id="type"
+                name="type">
+                <option></option>
+                <option>Board Game</option>
+                <option>Video Game</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-12">
+        <label for="genre">Genre</label>
+        <div>
+            <label class="checkbox-inline">
+                <input 
+                    type="checkbox"
+                    value="rpg"> RPG
+            </label>
+            <label class="checkbox-inline">
+                <input 
+                    type="checkbox"
+                    value="shooter"> Shooter
+            </label>
+            <label class="checkbox-inline">
+                <input 
+                    type="checkbox"
+                    value="Strategy"> Strategy
+            </label>
+        </div>
+        <div>
+            <label class="checkbox-inline">
+                <input 
+                    type="checkbox"
+                    value="puzzle"> Puzzle
+            </label>
+            <label class="checkbox-inline">
+                <input 
+                    type="checkbox"
+                    value="cooperative"> Cooperative
+            </label>
+            <label class="checkbox-inline">
+                <input 
+                    type="checkbox"
+                    value="party game"> Party Game
+            </label>
+        </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-2">
+            <label for="min-players">Min Players</label>
+            <div>
+                <input 
+                    type="number"
+                    class="form-control"
+                    step="1"
+                    min="1"
+                    id="min-players"
+                    name="min-players"> 
+            </div>
+        </div>
+
+        <div class="form-group col-sm-2">
+            <label for="max-players">Max Players</label>
+            <input 
+                type="number"
+                class="form-control"
+                step="1"
+                min="1"
+                id="max-players"
+                name="max-players"> 
+        </div>
+
+        <div class="form-group col-sm-3">
+            <label for="released">Year Released</label>
+            <input
+                type="number"
+                class="form-control"
+                id="released"
+                name="released">
+        </div>
+    </div>
+
+    <button class="btn btn-primary">Add Game</button>
+
+</form>

@@ -15,6 +15,11 @@ RabbleReviews.Views.UserNew = Backbone.FormView.extend({
         event.preventDefault();
         var name = this.$("#name").val();
         var password = this.$("#password").val();
+        var password2 = this.$("#password2").val();
+        if (password !== password2) {
+            this.handleErrors(["The two passwords must match!"]);
+            return;
+        }
         this.model.set("name", name);
         this.model.set("password", password);
         var view = this;
@@ -27,7 +32,7 @@ RabbleReviews.Views.UserNew = Backbone.FormView.extend({
                 Backbone.history.navigate("games", { trigger: true });
             }, 
             error: function (model, response) {
-                view.handleErrors(model, response);
+                view.handleErrors(response.responseJSON);
             }
         })
     }

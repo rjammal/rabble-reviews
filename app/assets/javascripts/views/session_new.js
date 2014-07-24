@@ -30,7 +30,7 @@ RabbleReviews.Views.SessionNew = Backbone.FormView.extend({
                 Backbone.history.navigate("games", { trigger: true });
             }, 
             error: function (model, response) {
-                view.handleErrors(model, response);
+                view.handleErrors(response.responseJSON);
             }
         });
     }

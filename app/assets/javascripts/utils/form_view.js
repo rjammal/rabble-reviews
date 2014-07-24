@@ -1,8 +1,8 @@
 Backbone.FormView = Backbone.View.extend({
-    handleErrors: function (model, response) {
+    handleErrors: function (errors) {
         html = "<ul>";
-        for (var error in response.responseJSON) {
-            html += "<li>" + response.responseJSON[error] + "</li>";
+        for (var error in errors) {
+            html += "<li>" + errors[error] + "</li>";
         }
         html += "</ul>"
         this.$(".errors").html(html);

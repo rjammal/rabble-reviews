@@ -1,12 +1,14 @@
-RabbleReviews = {};
-RabbleReviews.Views = {};
-RabbleReviews.Models = {};
-RabbleReviews.Collections = {};
-RabbleReviews.Routers = {};
+RabbleReviews = {
+    Views: {}, 
+    Models: {}, 
+    Collections: {},
+    Routers = {}, 
 
-$(function () {
-    RabbleReviews.games = new RabbleReviews.Models.Games();
-    RabbleReviews.games.fetch();
-    new RabbleReviews.Routers.RabbleRouter({ $rootEl: $('#content')})
-    Backbone.history.start();
-});
+    initialize: function () { 
+        this.games = new RabbleReviews.Models.Games();
+        this.games.fetch();
+        new this.Routers.RabbleRouter({ $rootEl: $('#content')})
+        Backbone.history.start();
+    }
+};
+

@@ -1,4 +1,9 @@
 RabbleReviews.Views.GameNew = Backbone.FormView.extend({
+    
+    initialize: function () {
+        this.listenTo(RabbleReviews.genres, "sync", this.render);
+    },
+
     template: JST["game_new"],
 
     render: function () {

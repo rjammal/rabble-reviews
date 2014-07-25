@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :users
     resources :games, except: [:new, :edit]
     resources :reviews, except: [:new, :edit]
+    resources :genres, only: [:index]
   end
 
 end

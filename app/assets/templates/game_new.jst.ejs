@@ -30,44 +30,13 @@
         <div class="form-group col-sm-12">
         <label for="genre">Genre</label>
         <div>
-            <label class="checkbox-inline">
-                <input 
-                    type="checkbox"
-                    class="genre"
-                    value="rpg"> RPG
-            </label>
-            <label class="checkbox-inline">
-                <input 
-                    type="checkbox"
-                    class="genre"
-                    value="shooter"> Shooter
-            </label>
-            <label class="checkbox-inline">
-                <input 
-                    type="checkbox"
-                    class="genre"
-                    value="strategy"> Strategy
-            </label>
-        </div>
-        <div>
-            <label class="checkbox-inline">
-                <input 
-                    type="checkbox"
-                    class="genre"
-                    value="puzzle"> Puzzle
-            </label>
-            <label class="checkbox-inline">
-                <input 
-                    type="checkbox"
-                    class="genre"
-                    value="cooperative"> Cooperative
-            </label>
-            <label class="checkbox-inline">
-                <input 
-                    type="checkbox"
-                    class="genre"
-                    value="party game"> Party Game
-            </label>
+            <% RabbleReviews.genres.each( function (genre) { %>
+                <label class="checkbox-inline">
+                    <input 
+                        type="checkbox"
+                        class="genre"
+                        value="<%= genre.escape('name') %>"> <%= genre.escape("name") %>
+            <% }) %>
         </div>
         </div>
     </div>

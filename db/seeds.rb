@@ -18,11 +18,14 @@ ActiveRecord::Base.transaction do
   sports = Genre.create!(name: "Sports")
   party_game = Genre.create!(name: "Party Game")
 
-  User.create!(name: "Guest", password: "password")
+  guest = User.create!(name: "Guest", password: "password")
+  rosemary = User.create!(name: "rosemary", password: "password")
 
-  Game.create!(name: "Puerto Rico", game_type: "Board", min_players: 2, max_players: 5, genres: [strategy, world_building])
-  Game.create!(name: "MarioKart", game_type: "Video", min_players: 1, max_players: 4, genres: [racing])
-  Game.create!(name: "Dominion", game_type: "Board", min_players: 2, max_players: 4, genres: [card_game])
-  Game.create!(name: "Minecraft", game_type: "Video")
+  puerto_rico = Game.create!(name: "Puerto Rico", game_type: "Board", min_players: 2, max_players: 5, genres: [strategy, world_building])
+  mariokart = Game.create!(name: "MarioKart", game_type: "Video", min_players: 1, max_players: 4, genres: [racing])
+  dominion = Game.create!(name: "Dominion", game_type: "Board", min_players: 2, max_players: 4, genres: [card_game])
+  minecraft = Game.create!(name: "Minecraft", game_type: "Video")
+
+  puerto_rico.reviews.create!(review: "It's a great game", rating: 5, author: guest)
 
 end

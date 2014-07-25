@@ -17,7 +17,12 @@ class Game < ActiveRecord::Base
   validates :name, :game_type, presence: true
   validates :game_type, inclusion: { in: ["Video", "Board"] }
 
+  has_many :reviews
   has_many :game_genres
   has_many :genres, through: :game_genres, source: :genre
+
+  def rating
+    reviews.average(:rating)
+  end
 
 end

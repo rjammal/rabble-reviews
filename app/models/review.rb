@@ -13,4 +13,9 @@
 
 class Review < ActiveRecord::Base
 
+  validates :author, :game, :rating, :review, presence: true
+
+  belongs_to :game
+  belongs_to :author, foreign_key: :author_id, class_name: "User"
+
 end

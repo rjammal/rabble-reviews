@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
+  has_many :reviews, foreign_key: :author_id
+
   def password=(val)
     @password = val
     self.password_digest = BCrypt::Password.create(val)

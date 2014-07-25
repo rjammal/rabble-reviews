@@ -16,8 +16,14 @@ RabbleReviews.Views.SessionNew = Backbone.FormView.extend({
 
     login: function (event) {
         event.preventDefault();
-        var name = this.$("#name").val();
-        var password = this.$("#password").val();
+        var name, password
+        if ($(event.currentTarget).attr("id") === "guest") {
+            name = "Guest";
+            password = "password";
+        } else {
+            name = this.$("#name").val();
+            password = this.$("#password").val();
+        }
         this.model.set("name", name);
         this.model.set("password", password);
         var view = this;

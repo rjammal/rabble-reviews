@@ -40,6 +40,10 @@
 
         <button class="btn btn-primary btn-block"><%= buttonText %></button>
 
+        <% if (buttonText === "Sign In") { %> 
+            <button class="btn btn-success btn-block" id="guest">Sign In as Guest</button>
+        <% } %>
+
     </form>
 
 </div>

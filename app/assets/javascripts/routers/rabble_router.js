@@ -10,7 +10,8 @@ RabbleReviews.Routers.RabbleRouter = Backbone.Router.extend({
         "logout": "sessionDestroy",
         "users/new": "userNew", 
         "games": "gamesIndex", 
-        "games/new": "gamesNew"        
+        "games/new": "gamesNew", 
+        "games/:id": "gamesShow"
     }, 
 
     sessionNew: function () {
@@ -40,6 +41,12 @@ RabbleReviews.Routers.RabbleRouter = Backbone.Router.extend({
     gamesNew: function () {
         var game = new RabbleReviews.Models.Game();
         var view = new RabbleReviews.Views.GameNew({ model: game });
+        this._swapView(view);
+    },
+
+    gamesShow: function (id) {
+        var game = RabbleReviews.games.getOrFetch(id);
+        var view = new RabbleReviews.Views.GameShow({ model: game });
         this._swapView(view);
     },
 

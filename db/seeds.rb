@@ -12,4 +12,6 @@ ActiveRecord::Base.transaction do
   Genre.create!(name: "cooperative")
   Genre.create!(name: "puzzle")
   Genre.create!(name: "party game")
+
+  
 end

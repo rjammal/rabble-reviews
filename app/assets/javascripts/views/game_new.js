@@ -24,8 +24,8 @@ RabbleReviews.Views.GameNew = Backbone.FormView.extend({
 
         var name = this.$("#name").val();
         var gameType = this.$("#game_type").val();
-        var minPlayers = this.$("#min_players").val();
-        var maxPlayers = this.$("#max_players").val();
+        var minPlayers = this.$("#min-players").val();
+        var maxPlayers = this.$("#max-players").val();
         var yearReleased = this.$("#released").val();
 
         this.model.set("name", name);
@@ -37,7 +37,7 @@ RabbleReviews.Views.GameNew = Backbone.FormView.extend({
         var view = this;
         this.model.save({}, {
             success: function (model) {
-                RabbleReviews.games.add(new RabbleReviews.Models.Game(model));
+                RabbleReviews.games.add(model);
                 Backbone.history.navigate("#games/" + model.id, { trigger: true });
             }, 
             error: function (model, response) {

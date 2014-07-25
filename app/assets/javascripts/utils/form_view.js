@@ -1,10 +1,9 @@
 Backbone.FormView = Backbone.View.extend({
     handleErrors: function (errors) {
-        html = "<ul>";
+        $errors = this.$(".errors")
+        $errors.addClass("alert alert-danger");
         for (var error in errors) {
-            html += "<li>" + errors[error] + "</li>";
+            $errors.append(errors[error] + "<br>");
         }
-        html += "</ul>"
-        this.$(".errors").html(html);
     }
 });

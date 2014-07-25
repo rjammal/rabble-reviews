@@ -11,7 +11,8 @@ window.RabbleReviews = {
         this.genres.fetch();
         new this.Routers.RabbleRouter({ 
             $rootEl: $('#content'), 
-            $navbar: $('#main-navbar')
+            $navbar: $('#main-navbar'), 
+            $login: $('#login-first-error')
         });
         Backbone.history.start();
     }

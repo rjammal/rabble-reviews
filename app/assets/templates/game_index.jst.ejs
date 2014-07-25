@@ -1,3 +1,9 @@
 backbone game index
 
+<ul>
+    <% RabbleReviews.games.each( function (game) { %>
+        <li><a href="#games/<%= game.get("id") %>"><%= game.escape("name") %></a></li>
+    <% }) %>
+</ul>
+
 <a href="#games/new">Create a New Game</a>

@@ -1,3 +1,19 @@
-game show page for <%= game.escape("name") %>
+<h2><%= game.escape("name") %></h2>
+
+<span id="game_type">Type:</span> <%= game.get("game_type") %> Game
+
+<span id="genres">Genres:</span> 
+<ul>
+    <% game.genres().each( function (genre) { %> 
+        <li><%= genre.get("name") %></li>
+    <% }) %>
+</ul>
+
+<span id="min-players">Min Players:</span> <%= game.get("min_players") %>
+
+<span id="min-players">Min Players:</span> <%= game.get("min_players") %>
+
+<span id="year-released">Year Released:</span> <%= game.get("year_released") %>
+
 
 <a href="#games">Return to Games Index</a>

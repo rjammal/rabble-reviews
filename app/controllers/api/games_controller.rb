@@ -23,8 +23,8 @@ class Api::GamesController < ApplicationController
   end
 
   def show
-    game = Game.find(params[:id])
-    render json: game
+    @game = Game.find(params[:id])
+    render :show
   end
 
   private

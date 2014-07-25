@@ -14,4 +14,9 @@
  *= require_self
  */
 
+label.checkbox-inline.no-indent {
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
 @import "bootstrap"

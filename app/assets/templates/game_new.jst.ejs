@@ -28,16 +28,17 @@
 
     <div class="row">
         <div class="form-group col-sm-12">
-        <label for="genre">Genre</label>
-        <div>
-            <% RabbleReviews.genres.each( function (genre) { %>
-                <label class="checkbox-inline">
-                    <input 
-                        type="checkbox"
-                        class="genre"
-                        value="<%= genre.escape('name') %>"> <%= genre.escape("name") %>
-            <% }) %>
-        </div>
+            <label for="genre">Genre</label>
+            <div>
+                <% RabbleReviews.genres.each( function (genre) { %>
+                    <label class="checkbox-inline no-indent">
+                        <input 
+                            type="checkbox"
+                            class="genre"
+                            value="<%= genre.escape('name') %>"> <%= genre.escape("name") %>
+                    </label>
+                <% }) %>
+            </div>
         </div>
     </div>
 

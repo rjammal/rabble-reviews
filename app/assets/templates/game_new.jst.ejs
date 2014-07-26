@@ -28,6 +28,17 @@
 
     <div class="row">
         <div class="form-group col-sm-12">
+            <label for="photo">Add Photo</label>
+            <input 
+                type="file"
+                class="photo-upload form-control"
+                name="photo"
+                id="photo">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-12">
             <label for="genre">Genre</label>
             <div>
                 <% RabbleReviews.genres.each( function (genre) { %>

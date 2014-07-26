@@ -13,7 +13,8 @@ RabbleReviews.Views.GameNew = Backbone.FormView.extend({
     }, 
 
     events: {
-        "click button": "saveGame"
+        "click button": "saveGame",
+        "change #photo": "handleFile"
     }, 
 
     saveGame: function (event) {
@@ -38,6 +39,7 @@ RabbleReviews.Views.GameNew = Backbone.FormView.extend({
         this.model.set("min_players", minPlayers);
         this.model.set("max_players", maxPlayers);
         this.model.set("year_released", yearReleased);
+        debugger
 
         var view = this;
         this.model.save({}, {

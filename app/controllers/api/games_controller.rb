@@ -1,5 +1,7 @@
 class Api::GamesController < ApplicationController
 
+  wrap_parameters include: [:name, :game_type, :min_players, :max_players, :year_released, :photo, genres: []]
+
   def index
     @games = Game.all
     render :index
@@ -8,6 +10,7 @@ class Api::GamesController < ApplicationController
   def create
     
     game = Game.new(game_params)
+    puts game.photo.url(:thumbnail)
 
     genres = params[:genres] || []
     # convert genre names to genre objects
@@ -29,7 +32,7 @@ class Api::GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:name, :game_type, :min_players, :max_players, :year_released, genres: [])
+    params.require(:game).permit(:name, :game_type, :min_players, :max_players, :year_released, :photo, genres: [])
   end
 
 end

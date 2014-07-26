@@ -1,4 +1,10 @@
 RabbleReviews.Views.UserNew = Backbone.FormView.extend({
+    
+    initialize: function () {
+        var splashURL = this.getRandomSplashURL();
+        $('body').attr("style", "background-image:url(" + splashURL + ")");
+    },
+
     template: JST["user_new"], 
 
     render: function () {
@@ -29,6 +35,7 @@ RabbleReviews.Views.UserNew = Backbone.FormView.extend({
                     id: model.escape("id"), 
                     name: model.escape("name")
                 };
+                $('body').removeAttr("style");
                 Backbone.history.navigate("games", { trigger: true });
             }, 
             error: function (model, response) {

@@ -38,4 +38,9 @@ label.checkbox-inline.no-indent {
     justify-content: flex-end;
 }
 
+body {
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
 @import "bootstrap"

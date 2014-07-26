@@ -2,9 +2,14 @@ RabbleReviews.Views.SessionNew = Backbone.FormView.extend({
     // the model here will actally be a session object, but it will behave the same as a user
     // it just sends to a different url
 
+    initialize: function () {
+        var splashURL = this.getRandomSplashURL();
+        $('body').attr("style", "background-image:url(" + splashURL + ")");
+    },
+
     template: JST["session_new"], 
 
-    render: function () {
+    render: function () {        
         var renderedContent = this.template({ user: this.model });
         this.$el.html(renderedContent);
         return this;
@@ -33,6 +38,7 @@ RabbleReviews.Views.SessionNew = Backbone.FormView.extend({
                     id: model.escape("id"), 
                     name: model.escape("name")
                 };
+                $('body').removeAttr("style");
                 Backbone.history.navigate("games", { trigger: true });
             }, 
             error: function (model, response) {

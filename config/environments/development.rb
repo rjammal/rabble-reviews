@@ -38,7 +38,7 @@ Rails.application.configure do
   config.paperclip_defaults = {                                   
     :storage => :s3,                                              
     :s3_protocol => 'http',                                       
-    :url =>':s3_domain_url',                                      
+    :url =>'s3-us-west-2',                                      
     :path => "images/:class/:id.:style.:extension",
     :s3_credentials => {                                          
       :bucket => ENV['AWS_BUCKET'],                 

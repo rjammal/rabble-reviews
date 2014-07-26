@@ -31,6 +31,9 @@ gem 'figaro'
 
 gem 'bcrypt'
 
+gem 'paperclip'
+gem 'aws-sdk'
+
 group :development do 
   gem 'better_errors'
   gem 'binding_of_caller'

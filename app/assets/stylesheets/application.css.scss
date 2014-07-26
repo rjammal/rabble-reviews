@@ -23,4 +23,14 @@ label.checkbox-inline.no-indent {
     text-align: center;
 }
 
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-image {
+    border: thin solid red;
+    height: 100px;
+}
+
 @import "bootstrap"

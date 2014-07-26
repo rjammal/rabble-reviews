@@ -33,4 +33,9 @@ label.checkbox-inline.no-indent {
     height: 100px;
 }
 
+.flex-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
 @import "bootstrap"

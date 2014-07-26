@@ -1,9 +1,20 @@
+
+<div class="col-sm-6 col-sm-offset-3">
 <h2>Games</h2>
 
-<ul>
+
+<p class="flex-right text-muted">Reviews</p>
+<ul class="list-group list-unstyled">
     <% RabbleReviews.games.each( function (game) { %>
-        <li><a href="#games/<%= game.get("id") %>"><%= game.escape("name") %></a></li>
+        <li>
+            <a class="list-group-item" href="#games/<%= game.get("id") %>"><%= game.escape("name") %> 
+                <span class="badge">
+                    <%= game.reviews().length %>
+                </span>
+            </a>
+        </li>
     <% }) %>
 </ul>
 
-<a href="#games/new">Create a New Game</a>
+<a href="#games/new" class="btn btn-primary">Create a New Game</a>
+</div>

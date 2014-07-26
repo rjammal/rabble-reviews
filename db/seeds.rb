@@ -27,5 +27,9 @@ ActiveRecord::Base.transaction do
   minecraft = Game.create!(name: "Minecraft", game_type: "Video")
 
   puerto_rico.reviews.create!(review: "It's a great game", rating: 5, author: guest)
+  puerto_rico.reviews.create!(review: "It's my favorite board game", rating: 5, author: rosemary)
+  minecraft.reviews.create!(review: "What's the point? Graphics are awful!", rating: 2, author: guest)
+  minecraft.reviews.create!(review: "I like building things!", rating: 4, author: rosemary)
+  mariokart.reviews.create!(review: "Great party game, and good solo too.", rating: 5, author: rosemary)
 
 end

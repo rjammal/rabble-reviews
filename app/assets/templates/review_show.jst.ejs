@@ -1,1 +1,9 @@
-showing review <%= review.escape("review") %>
+<div class="panel panel-default">
+    <div class="panel-heading flex-container">
+        <h4><small>Reviewer:</small> <%= review.author().escape("name") %></h4>
+        <h4><small>Rating:</small> <%= review.escape("rating") %></h4>
+    </div>
+    <div class="panel-body">
+        <%= review.escape("review") %>
+    </div>
+</div>

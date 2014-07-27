@@ -31,9 +31,6 @@ gem 'figaro'
 
 gem 'bcrypt'
 
-gem 'paperclip'
-gem 'aws-sdk'
-
 gem "keyword_search"
 
 group :development do 

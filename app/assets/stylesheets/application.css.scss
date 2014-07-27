@@ -23,6 +23,24 @@ label.checkbox-inline.no-indent {
     text-align: center;
 }
 
+html {
+    height: 100%;
+}
+
+#access-site {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.access-site {
+    height: 100%;
+}
+
+#content {
+    height: 100%;
+}
+
 .flex-container {
     display: flex;
     justify-content: space-between;
@@ -39,6 +57,7 @@ label.checkbox-inline.no-indent {
 }
 
 body {
+    height: 100%;
     background-repeat: no-repeat;
     background-size: 100% auto;
 }

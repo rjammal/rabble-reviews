@@ -7,6 +7,8 @@ RabbleReviews.Views.UserNew = Backbone.FormView.extend({
 
     template: JST["user_new"], 
 
+    className: "access-site",
+
     render: function () {
         var renderedContent = this.template({ user: this.model });
         this.$el.html(renderedContent);

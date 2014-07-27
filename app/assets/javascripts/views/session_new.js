@@ -9,6 +9,8 @@ RabbleReviews.Views.SessionNew = Backbone.FormView.extend({
 
     template: JST["session_new"], 
 
+    className: "access-site",
+
     render: function () {        
         var renderedContent = this.template({ user: this.model });
         this.$el.html(renderedContent);

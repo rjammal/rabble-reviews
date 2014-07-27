@@ -34,6 +34,8 @@ gem 'bcrypt'
 gem 'paperclip'
 gem 'aws-sdk'
 
+gem "keyword_search"
+
 group :development do 
   gem 'better_errors'
   gem 'binding_of_caller'

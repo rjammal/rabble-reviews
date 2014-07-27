@@ -40,6 +40,10 @@ class Game < ActiveRecord::Base
         arguments << "%#{values.join(' ')}%"
       end
 
+      with.keyword :game_type do |values|
+        clauses << "game_type like ?"
+        arguments << "%#{values[0].capitalize}%"
+      end
 
     end
 

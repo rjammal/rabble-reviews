@@ -38,7 +38,7 @@ RabbleReviews.Views.UserNew = Backbone.FormView.extend({
                     name: model.escape("name")
                 };
                 $('body').removeAttr("style");
-                Backbone.history.navigate("games", { trigger: true });
+                Backbone.history.navigate("games/search", { trigger: true });
             }, 
             error: function (model, response) {
                 view.handleErrors(response.responseJSON);

@@ -5,7 +5,7 @@
 
 <p class="flex-right text-muted">Reviews</p>
 <ul class="list-group list-unstyled">
-    <% RabbleReviews.games.each( function (game) { %>
+    <% games.each( function (game) { %>
         <li>
             <a class="list-group-item" href="#games/<%= game.get("id") %>"><%= game.escape("name") %> 
                 <span class="badge">

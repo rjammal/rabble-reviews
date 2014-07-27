@@ -7,7 +7,7 @@ RabbleReviews.Views.GameIndex = Backbone.View.extend({
     template: JST["game_index"], 
 
     render: function () {
-        var renderedContent = this.template();
+        var renderedContent = this.template({ games: this.collection });
         this.$el.html(renderedContent);
         return this;
     }

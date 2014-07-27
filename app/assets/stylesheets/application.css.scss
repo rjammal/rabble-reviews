@@ -62,4 +62,30 @@ body {
     background-size: 100% auto;
 }
 
+#left-header {
+    height: 50px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+}
+
+#left-header img {
+    height: 100%;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#site-name {
+    color: grey;
+    font-family: 'Permanent Marker', cursive;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 10px;
+}
+
+#main-navbar {
+    border-radius: 0px;
+}
+
 @import "bootstrap"

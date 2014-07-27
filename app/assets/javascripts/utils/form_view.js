@@ -23,10 +23,10 @@ Backbone.FormView = Backbone.View.extend({
 
     getRandomSplashURL: function () {
         var pics = [
-            "https://s3-us-west-2.amazonaws.com/com.rabble-reviews/splash/puerto_rico.jpg", 
             "https://s3-us-west-2.amazonaws.com/com.rabble-reviews/splash/mario.jpg", 
             "https://s3-us-west-2.amazonaws.com/com.rabble-reviews/splash/god-of-war.jpg",
             "https://s3-us-west-2.amazonaws.com/com.rabble-reviews/splash/catan.jpg",
+            "https://s3-us-west-2.amazonaws.com/com.rabble-reviews/splash/RoboRally.jpg",
             ];
         var index = Math.floor(Math.random() * pics.length);
         return pics[index];

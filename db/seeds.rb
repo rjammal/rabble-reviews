@@ -26,10 +26,10 @@ ActiveRecord::Base.transaction do
   dominion = Game.create!(name: "Dominion", game_type: "Board", min_players: 2, max_players: 4, genres: [card_game])
   minecraft = Game.create!(name: "Minecraft", game_type: "Video")
 
-  puerto_rico.reviews.create!(review: "It's a great game", rating: 5, author: guest)
-  puerto_rico.reviews.create!(review: "It's my favorite board game", rating: 5, author: rosemary)
-  minecraft.reviews.create!(review: "What's the point? Graphics are awful!", rating: 2, author: guest)
-  minecraft.reviews.create!(review: "I like building things!", rating: 4, author: rosemary)
-  mariokart.reviews.create!(review: "Great party game, and good solo too.", rating: 5, author: rosemary)
+  puerto_rico.reviews.create!(review_body: "It's a great game", rating: 5, author: guest)
+  puerto_rico.reviews.create!(review_body: "It's my favorite board game", rating: 5, author: rosemary)
+  minecraft.reviews.create!(review_body: "What's the point? Graphics are awful!", rating: 2, author: guest)
+  minecraft.reviews.create!(review_body: "I like building things!", rating: 4, author: rosemary)
+  mariokart.reviews.create!(review_body: "Great party game, and good solo too.", rating: 5, author: rosemary)
 
 end

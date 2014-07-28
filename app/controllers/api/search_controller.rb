@@ -4,7 +4,7 @@ class Api::SearchController < ApplicationController
     begin
       @games = Game.search(params[:query])
       render "index"
-    rescue ParseError
+    rescue KeywordSearch::ParseError
       render json: "parse error", status: 422
     end
   end

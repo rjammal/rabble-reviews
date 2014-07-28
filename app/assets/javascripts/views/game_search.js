@@ -16,6 +16,8 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
 
     search: function (event) {
         event.preventDefault();
+        var $searchbox = this.$("#search-box");
+        // $searchbox.animate({})
         this.model.set("query", this.$("#query").val())
         var searchView = this;
         this.model.save({}, {

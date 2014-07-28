@@ -5,6 +5,7 @@ window.RabbleReviews = {
     Routers: {}, 
 
     initialize: function () { 
+        this.games = new RabbleReviews.Collections.Games();
         this.genres = new RabbleReviews.Collections.Genres();
         this.genres.fetch();
         new this.Routers.RabbleRouter({ 

@@ -5,9 +5,9 @@ json.genres game.genres do |genre|
 end
 
 json.reviews game.reviews do |review|
-  json.extract! review, :review_body, :author, :game_id, :rating, :created_at, :updated_at
+  json.extract! review, :id, :review_body, :author, :game_id, :rating, :created_at, :updated_at
 
   json.review_votes review.review_votes do |vote|
-    json.extract! vote, :user_id
+    json.extract! vote, :id, :user_id
   end
 end

@@ -22,7 +22,7 @@ class Game < ActiveRecord::Base
   has_many :genres, through: :game_genres, source: :genre
 
   def rating
-    reviews.average(:rating)
+    (reviews.average(:rating) || 0).round(2)
   end
 
   def self.search(terms)

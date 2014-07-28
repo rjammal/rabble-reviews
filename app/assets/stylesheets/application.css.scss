@@ -51,9 +51,40 @@ html {
     height: 100px;
 }
 
-.flex-right {
-    display: flex;
-    justify-content: flex-end;
+table tr td a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+}
+
+table tr td a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+table tr td.leftmost-column {
+    padding-right: 0 !important;
+}
+
+.middle-column {
+    text-align: center;
+}
+
+table tr td.middle-column {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center;
+}
+
+.rightmost-column {
+    text-align: right;
+}
+
+table tr td.rightmost-column {
+    text-align: right;
+    padding-left: 0 !important;
 }
 
 body {

@@ -1,18 +1,25 @@
 
 <h2>Games</h2>
 
-
-<p class="flex-right text-muted">Reviews</p>
-<ul class="list-group list-unstyled">
+<table class="table table-hover">
+    <thead class="text-muted">
+        <th>Game</th>
+        <th class="middle-column">Rating</th>
+        <th class="rightmost-column">Reviews</th>
+    </thead>
     <% games.each( function (game) { %>
-        <li>
-            <a class="list-group-item" href="#games/<%= game.get("id") %>"><%= game.escape("name") %> 
-                <span class="badge">
-                    <%= game.reviews().length %>
-                </span>
-            </a>
-        </li>
+        <tr>
+            <td class="leftmost-column">
+                <a href="#games/<%= game.get("id") %>"><%= game.escape("name") %></a>
+            </td>
+            <td class="middle-column">
+                <a href="#games/<%= game.get("id") %>"><%= game.escape("rating")%></a>
+            </td>
+            <td class="rightmost-column">
+                <a href="#games/<%= game.get("id") %>"><%= game.reviews().length %></a>
+            </td>
+        </tr>
     <% }) %>
-</ul>
+</table>
 
 <a href="#games/new" class="btn btn-primary">Create a New Game</a>

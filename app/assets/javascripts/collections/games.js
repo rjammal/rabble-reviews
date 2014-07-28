@@ -11,5 +11,9 @@ RabbleReviews.Collections.Games = Backbone.Collection.extend({
             RabbleReviews.games.add(game);
         }
         return game;
+    }, 
+
+    comparator: function (game) {
+        return -game.get("rating");
     }
 });

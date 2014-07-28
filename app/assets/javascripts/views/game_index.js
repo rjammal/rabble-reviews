@@ -1,7 +1,7 @@
 RabbleReviews.Views.GameIndex = Backbone.View.extend({
     
     initialize: function () {
-        this.listenTo(this.collection, "sync add", this.render);
+        this.listenTo(this.collection, "sync add sort", this.render);
     },
 
     template: JST["game_index"], 

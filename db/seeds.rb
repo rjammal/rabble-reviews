@@ -32,4 +32,14 @@ ActiveRecord::Base.transaction do
   minecraft.reviews.create!(review_body: "I like building things!", rating: 4, author: rosemary)
   mariokart.reviews.create!(review_body: "Great party game, and good solo too.", rating: 5, author: rosemary)
 
+  video_game_list = ["wii", "playstation2", "xbox360"]
+  video_game_list.each do |file| 
+    File.open("db/seed_games/#{file}.txt").each do |line|
+      Game.create!(name: line, game_type: "Video")
+    end
+  end
+
+  File.open("db/seed_games/board_games.txt").each do |line|
+    Game.create!(name: line, game_type: "Board")
+  end
 end

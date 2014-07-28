@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727163957) do
+ActiveRecord::Schema.define(version: 20140728144044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20140727163957) do
   end
 
   add_index "genres", ["name"], name: "index_genres_on_name", unique: true, using: :btree
+
+  create_table "review_votes", force: true do |t|
+    t.integer "review_id", null: false
+    t.integer "user_id",   null: false
+  end
+
+  add_index "review_votes", ["review_id"], name: "index_review_votes_on_review_id", using: :btree
+  add_index "review_votes", ["user_id", "review_id"], name: "index_review_votes_on_user_id_and_review_id", unique: true, using: :btree
+  add_index "review_votes", ["user_id"], name: "index_review_votes_on_user_id", using: :btree
 
   create_table "reviews", force: true do |t|
     t.integer  "author_id",   null: false

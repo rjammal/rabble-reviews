@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :reviews, except: [:new, :edit]
     resources :genres, only: [:index]
     resources :search, only: :create
+    resources :review_votes, only: [:create, :destroy]
   end
 
 end

@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token
 
   has_many :reviews, foreign_key: :author_id
+  has_many :review_votes
 
   def password=(val)
     @password = val

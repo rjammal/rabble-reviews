@@ -18,5 +18,6 @@ class Review < ActiveRecord::Base
 
   belongs_to :game
   belongs_to :author, foreign_key: :author_id, class_name: "User"
+  has_many :review_votes
 
 end

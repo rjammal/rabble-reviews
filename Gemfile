@@ -36,6 +36,8 @@ gem "keyword_search"
 gem "paperclip"
 gem "aws-sdk"
 
+gem 'kaminari'
+
 group :development do 
   gem 'better_errors'
   gem 'binding_of_caller'

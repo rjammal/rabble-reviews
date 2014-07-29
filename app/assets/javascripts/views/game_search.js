@@ -28,6 +28,7 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
         this.model.save({}, {
             success: function (model, response) {
                 searchView.$(".search-errors").html("").removeClass("alert");
+                searchView.$("#create-new-game").removeClass("hidden");
                 searchView.$('.search-rows').addClass('searched');
                 var $results = searchView.$("#results").empty();
                 var games = new RabbleReviews.Collections.Games(response);

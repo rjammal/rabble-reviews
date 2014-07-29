@@ -50,7 +50,8 @@ class Game < ActiveRecord::Base
       with.default_keyword :name
 
       with.keyword :name do |values|
-        clauses << "name like ?"
+        clauses << "lower(name) like ?"
+        values = values.map { |val| val.downcase }
         arguments << "%#{values.join(' ')}%"
       end
 

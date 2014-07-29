@@ -59,11 +59,6 @@ html {
     justify-content: space-between;
 }
 
-.game-image {
-    border: thin solid red;
-    height: 100px;
-}
-
 /* TABLE STYLING */
 
 table tr td a {
@@ -204,6 +199,11 @@ body {
     position: relative;
     height: 100%;
     overflow: auto;
+}
+
+.game-image {
+    width: 100%;
+    height: auto;
 }
 
 @import "bootstrap"

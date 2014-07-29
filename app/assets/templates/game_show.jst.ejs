@@ -9,32 +9,34 @@
 </div>
 
 <div class="col-sm-6 center" id="game-show-main">
+    <div class="row">
+        <div class="flex-container">
+            <h2><%= game.escape("name") %></h2>
+            <h2><small>Rating: <%= game.escape("rating") || "None Yet"%></small></h2>
+        </div>
+        <div class="game-image col-sm-3">
+            <img src="<%= game.escape("image") %>" class="game-image">
+        </div>
 
-    <div class="flex-container">
-        <h2><%= game.escape("name") %></h2>
-        <h2><small>Rating: <%= game.escape("rating") || "None Yet"%></small></h2>
+        <dl class="dl-horizontal col-sm-9">
+
+        <dt id="game_type">Type:</dt><dd><%= game.escape("game_type") %> Game</dd>
+
+        <dt id="genres">Genres:</dt> 
+        <dd><ul class="list-unstyled">
+            <% game.genres().each( function (genre) { %> 
+                <li><%= genre.escape("name") %></li>
+            <% }) %>
+        </ul></dd>
+
+        <dt id="min-players">Min Players:</dt><dd><%= game.escape("min_players") %></dd>
+
+        <dt id="max-players">Max Players:</dt><dd><%= game.escape("max_players") %></dd>
+
+        <dt id="year-released">Year Released:</dt><dd><%= game.escape("year_released") %></dd>
+
+        </dl>
     </div>
-
-    <div class="col-sm-3 game-image"><img src="<%= game.escape("image") %>"></div>
-
-    <dl class="dl-horizontal col-sm-9">
-
-    <dt id="game_type">Type:</dt><dd><%= game.escape("game_type") %> Game</dd>
-
-    <dt id="genres">Genres:</dt> 
-    <dd><ul class="list-unstyled">
-        <% game.genres().each( function (genre) { %> 
-            <li><%= genre.escape("name") %></li>
-        <% }) %>
-    </ul></dd>
-
-    <dt id="min-players">Min Players:</dt><dd><%= game.escape("min_players") %></dd>
-
-    <dt id="max-players">Max Players:</dt><dd><%= game.escape("max_players") %></dd>
-
-    <dt id="year-released">Year Released:</dt><dd><%= game.escape("year_released") %></dd>
-
-    </dl>
     <h3>Reviews</h3>
     <ul id="reviews" class="list-unstyled"></ul>
 

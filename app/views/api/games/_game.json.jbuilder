@@ -1,5 +1,7 @@
 json.extract! game, :id, :name, :game_type, :min_players, :max_players, :year_released, :rating
 
+json.image game.image(:small)
+
 json.genres game.genres do |genre| 
   json.extract! genre, :name
 end

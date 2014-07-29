@@ -15,7 +15,7 @@
         <h2><small>Rating: <%= game.escape("rating") || "None Yet"%></small></h2>
     </div>
 
-    <div class="col-sm-3 game-image"></div>
+    <div class="col-sm-3 game-image"><img src="<%= game.escape("image") %>"></div>
 
     <dl class="dl-horizontal col-sm-9">
 

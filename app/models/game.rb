@@ -26,7 +26,7 @@ class Game < ActiveRecord::Base
   has_many :genres, through: :game_genres, source: :genre
 
   has_attached_file :image, :styles => {
-    :small => "50x50>"
+    :small => "200x200>"
   }
   validates_attachment_content_type(
     :image,

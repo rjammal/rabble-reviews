@@ -20,10 +20,10 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
     id: "game-show",
 
     events: {
-        "click #new-query": "returnToSearch"
+        "click #new-query": "blankSearch"
     },
 
-    returnToSearch: function (event) {
+    blankSearch: function (event) {
         delete RabbleReviews.sourceGames;
     }, 
 
@@ -32,7 +32,13 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
         this.$el.html(renderedContent);
         this.attachSubviews();
         if (this.alreadyAuthored()) {
-            this.removeSubview("#review-new", this.subviews()["#review-new"][0]);
+            var newReviewArray = this.subviews()["review-new"]
+            var subview = newReviewArray && newReviewArray[0];
+            //don't remove if already removed
+            if (subview) {
+                this.removeSubview("#review-new", subview);
+            }
+            this.$("#review-new").html("");
         }
         return this;
     }, 
@@ -47,7 +53,8 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
         this.model.reviews().each( function (review) {
             rating += review.get("rating");
         })
-        this.model.set("rating", rating / this.model.reviews().length);
+        var avg = rating / this.model.reviews().length;
+        this.model.set("rating", avg.toFixed(2));
     },
 
     alreadyAuthored: function () {

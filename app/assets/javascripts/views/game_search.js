@@ -5,6 +5,12 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
     render: function () {
         var renderedContent = this.template();
         this.$el.html(renderedContent);
+        if (RabbleReviews.sourceGames) {
+            this.$("#query").val(RabbleReviews.sourceGames.lastQuery);
+            this.$('.search-rows').addClass('searched');
+            var gameIndex = new RabbleReviews.Views.GameIndex({ collection: RabbleReviews.sourceGames });
+            this.addSubview("#results", gameIndex);
+        }
         return this;
     }, 
 
@@ -25,8 +31,10 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
                 searchView.$('.search-rows').addClass('searched');
                 var $results = searchView.$("#results").empty();
                 var games = new RabbleReviews.Collections.Games(response);
+                games.lastQuery = searchView.$("#query").val();
+                RabbleReviews.sourceGames = games;
                 var gameIndex = new RabbleReviews.Views.GameIndex({ collection: games });
-                $results.html(gameIndex.render().$el);
+                searchView.addSubview("#results", gameIndex);
             }, 
             error: function (model, response) {
                 if (response.status === 422) {

@@ -11,20 +11,29 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
             gameView.addReview(review);
         });
 
-        if (!this.alreadyAuthored()) {
-            var reviewNew = new RabbleReviews.Views.ReviewNew({ model: this.model });
-            this.addSubview("#review-new", reviewNew);
-        }
+        var reviewNew = new RabbleReviews.Views.ReviewNew({ model: this.model });
+        this.addSubview("#review-new", reviewNew);
     },
 
     template: JST["game_show"], 
 
     id: "game-show",
 
+    events: {
+        "click #new-query": "returnToSearch"
+    },
+
+    returnToSearch: function (event) {
+        delete RabbleReviews.sourceGames;
+    }, 
+
     render: function () {
         var renderedContent = this.template({ game: this.model });
         this.$el.html(renderedContent);
         this.attachSubviews();
+        if (this.alreadyAuthored()) {
+            this.removeSubview("#review-new", this.subviews()["#review-new"][0]);
+        }
         return this;
     }, 
 

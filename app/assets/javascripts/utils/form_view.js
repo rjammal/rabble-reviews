@@ -11,14 +11,10 @@ Backbone.FormView = Backbone.View.extend({
         var file = event.currentTarget.files[0]; 
         var reader = new FileReader();
         var formView = this; 
-        debugger
         reader.onload = function (e) {
-            formView.model.set("photo", this.result);
-            debugger
+            formView.model.set("image", this.result);
         }
-        debugger
         reader.readAsDataURL(file);
-        debugger
     }, 
 
     getRandomSplashURL: function () {

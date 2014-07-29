@@ -13,7 +13,8 @@ RabbleReviews.Views.GameNew = Backbone.FormView.extend({
     }, 
 
     events: {
-        "click button": "saveGame",
+        "click button#submit": "saveGame",
+        "change #photo": "handleFile"
     }, 
 
     saveGame: function (event) {

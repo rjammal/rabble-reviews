@@ -2,14 +2,18 @@
 #
 # Table name: games
 #
-#  id            :integer          not null, primary key
-#  name          :string(255)      not null
-#  game_type     :string(255)      not null
-#  year_released :integer
-#  min_players   :integer
-#  max_players   :integer
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id                 :integer          not null, primary key
+#  name               :string(255)      not null
+#  game_type          :string(255)      not null
+#  year_released      :integer
+#  min_players        :integer
+#  max_players        :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  image_file_name    :string(255)
+#  image_content_type :string(255)
+#  image_file_size    :integer
+#  image_updated_at   :datetime
 #
 
 class Game < ActiveRecord::Base
@@ -20,6 +24,14 @@ class Game < ActiveRecord::Base
   has_many :reviews
   has_many :game_genres
   has_many :genres, through: :game_genres, source: :genre
+
+  has_attached_file :image, :styles => {
+    :small => "50x50>"
+  }
+  validates_attachment_content_type(
+    :image,
+    :content_type => /\Aimage\/.*\Z/
+  )
 
   def rating
     (reviews.average(:rating) || 0).round(2)

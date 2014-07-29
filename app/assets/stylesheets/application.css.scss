@@ -14,6 +14,15 @@
  *= require_self
  */
 
+
+ /* UTILITIES */
+
+.full-height {
+    height: 100%;
+}
+
+/* GAME NEW */
+
 label.checkbox-inline.no-indent {
     margin-left: 0px;
     margin-right: 10px;
@@ -38,13 +47,11 @@ html {
 }
 
 #content {
-    /*height: 100%;*/
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    top: 50px;
-
+    top: 52px;
 }
 
 .flex-container {
@@ -132,31 +139,6 @@ body {
 
 /* SEARCH STYLING */
 
-#query {
-    border-radius: 20px;
-    margin-right: 10px;
-    width: 90%;
-    display: inline-block;
-}
-
-#search-box {
-    height: 36px;
-
-    /*margin-top: -18px;*/
-}
-
-.search-rows.searched {
-    top: 20px;
-    transition: 1s ease;
-    bottom: 0;
-}
-
-#search-button {
-    border-radius: 20px;
-    width: 35px;
-    padding-left: 10px;
-}
-
 .search-center {
     height: 100%;
     overflow: hidden;
@@ -172,8 +154,56 @@ body {
     top: 50%;
 }
 
+.search-rows.searched {
+    top: 20px;
+    transition: 1s ease;
+    bottom: 0;
+}
+
+#search-box {
+    height: 36px;
+}
+
+#query {
+    border-radius: 20px;
+    margin-right: 10px;
+    width: 90%;
+    display: inline-block;
+}
+
+#search-button {
+    border-radius: 20px;
+    width: 35px;
+    padding-left: 10px;
+}
+
 #results {
     /*position:relative;*/
+}
+
+/* GAME SHOW PAGE */
+
+#game-show {
+    height: 100%;
+    overflow: hidden;
+}
+
+#navigate-to-search {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 50%;
+}
+
+#navigate-to-search a {
+    border: none;
+    text-align: right;
+}
+
+#game-show-main {
+    position: relative;
+    height: 100%;
+    overflow: auto;
 }
 
 @import "bootstrap"

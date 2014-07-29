@@ -19,6 +19,8 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
 
     template: JST["game_show"], 
 
+    id: "game-show",
+
     render: function () {
         var renderedContent = this.template({ game: this.model });
         this.$el.html(renderedContent);

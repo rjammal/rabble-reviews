@@ -1,38 +1,44 @@
 
-<div class="row">
-<div class="col-sm-6 col-sm-offset-3">
+<div class="row full-height">
 
-<div class="flex-container">
-    <h2><%= game.escape("name") %></h2>
-    <h2><small>Rating: <%= game.escape("rating") || "None Yet"%></small></h2>
+<div class="col-sm-3" id="navigate-to-search">
+    <div class="full-height list-group">
+        <a class="list-group-item" href="#games/search">Back to Results</a>
+        <a class="list-group-item" href="#games/search">Create a New Search</a>
+    </div>
 </div>
 
-<div class="col-sm-3 game-image"></div>
+<div class="col-sm-6 center" id="game-show-main">
 
-<dl class="dl-horizontal col-sm-9">
+    <div class="flex-container">
+        <h2><%= game.escape("name") %></h2>
+        <h2><small>Rating: <%= game.escape("rating") || "None Yet"%></small></h2>
+    </div>
 
-<dt id="game_type">Type:</dt><dd><%= game.escape("game_type") %> Game</dd>
+    <div class="col-sm-3 game-image"></div>
 
-<dt id="genres">Genres:</dt> 
-<dd><ul class="list-unstyled">
-    <% game.genres().each( function (genre) { %> 
-        <li><%= genre.escape("name") %></li>
-    <% }) %>
-</ul></dd>
+    <dl class="dl-horizontal col-sm-9">
 
-<dt id="min-players">Min Players:</dt><dd><%= game.escape("min_players") %></dd>
+    <dt id="game_type">Type:</dt><dd><%= game.escape("game_type") %> Game</dd>
 
-<dt id="max-players">Max Players:</dt><dd><%= game.escape("max_players") %></dd>
+    <dt id="genres">Genres:</dt> 
+    <dd><ul class="list-unstyled">
+        <% game.genres().each( function (genre) { %> 
+            <li><%= genre.escape("name") %></li>
+        <% }) %>
+    </ul></dd>
 
-<dt id="year-released">Year Released:</dt><dd><%= game.escape("year_released") %></dd>
+    <dt id="min-players">Min Players:</dt><dd><%= game.escape("min_players") %></dd>
 
-</dl>
+    <dt id="max-players">Max Players:</dt><dd><%= game.escape("max_players") %></dd>
 
-<h3>Reviews</h3>
-<ul id="reviews" class="list-unstyled"></ul>
+    <dt id="year-released">Year Released:</dt><dd><%= game.escape("year_released") %></dd>
 
-<div id="review-new"></div>
+    </dl>
+    <h3>Reviews</h3>
+    <ul id="reviews" class="list-unstyled"></ul>
 
-<a href="#games/search">Back to Search</a>
+    <div id="review-new"></div>
+
 </div>
 </div>

@@ -1,5 +1,11 @@
 RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
 
+    initialize: function () {
+        var game = new RabbleReviews.Models.Game();
+        var newGameView = new RabbleReviews.Views.GameNew({ model: game });
+        this.addSubview("#modal-wrapper", newGameView);
+    },
+
     template: JST["search"], 
 
     render: function () {
@@ -11,8 +17,17 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
             var gameIndex = new RabbleReviews.Views.GameIndex({ collection: RabbleReviews.sourceGames });
             this.addSubview("#results", gameIndex);
         }
+        this.attachSubviews();
+        $("#modal-wrapper").modal();
         return this;
     }, 
+
+    remove: function () {
+        Backbone.CompositeView.prototype.remove.call(this);
+        $("#modal-wrapper").modal("hide");
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+    },
 
     className: "search-center",
 

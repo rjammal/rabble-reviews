@@ -96,6 +96,7 @@ class Game < ActiveRecord::Base
       .joins("LEFT JOIN reviews ON games.id = reviews.game_id")
       .group("games.id")
       .having(query, *arguments)
+      .order("CASE WHEN AVG(reviews.rating) IS NULL THEN 0 ElSE AVG(reviews.rating) END DESC, COUNT(reviews.id) DESC")
   end
 
 end

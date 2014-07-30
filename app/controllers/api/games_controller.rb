@@ -3,10 +3,14 @@ class Api::GamesController < ApplicationController
   wrap_parameters include: [:name, :game_type, :min_players, :max_players, :year_released, :image, genres: []]
 
   def index
-    @page_number = params[:page] || 1
-    search = params[:query] || ""
-    @games = Game.page(params[:page]).search(search).includes(:reviews, :genres)
-    render :index
+    begin 
+      @page_number = params[:page] || 1
+      @query = params[:query] || ""
+      @games = Game.page(params[:page]).search(@query).includes(:reviews, :genres)
+      render :index
+    rescue KeywordSearch::ParseError
+      render json: "parse error", status: 422
+    end
   end
 
   def create

@@ -15,7 +15,7 @@ RabbleReviews.Views.GameIndex = Backbone.View.extend({
 
     remove: function () {
         Backbone.View.prototype.remove.call(this);
-        $window.off("scroll");
+        $(window).off("scroll");
     },
 
     listenForScroll: function () {

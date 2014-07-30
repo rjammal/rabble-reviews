@@ -7,6 +7,7 @@ RabbleReviews.Collections.Games = Backbone.Collection.extend({
 
         this.pageNumber = parseInt(response.page_number);
         this.totalPages = parseInt(response.total_pages);
+        this.query = response.query;
         return response.models;
     },
 

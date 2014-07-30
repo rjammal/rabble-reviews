@@ -22,7 +22,8 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
     events: {
         "click #new-query": "blankSearch", 
         "click #edit-button": "edit", 
-        "click #save-button": "save"
+        "click #save-button": "save", 
+        "click #dropdown-genres": "genreSelect"
     },
 
     blankSearch: function (event) {
@@ -39,6 +40,10 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
         event.preventDefault();
         this.$(".edit").addClass("hidden");
         this.$(".show-details").removeClass("hidden");
+    },
+
+    genreSelect: function (event) {
+        event.stopPropagation();
     },
 
     render: function () {

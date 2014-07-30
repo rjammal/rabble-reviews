@@ -12,27 +12,74 @@
     <div class="row">
         <div class="flex-container">
             <h2>
-                <%= game.escape("name") %><span>
+                <%= game.escape("name") %>
+                <span>
                     <button class="btn btn-default show-details" id="edit-button">Edit</button>
                     <button class="btn btn-primary edit hidden" id="save-button">Save</button>
                 </span>
             </h2>
             <h2><small>Rating: <%= game.escape("rating") || "None Yet"%></small></h2>
         </div>
-        <div class="game-image col-sm-3">
+        <div class="game-image col-sm-4">
             <img src="<%= game.escape("image") %>" class="game-image">
+            <label class="hidden edit">
+                Upload New Photo
+                <input 
+                    type="file"
+                    name="image"
+                    class="photo-upload form-control">
+            </label>
         </div>
 
-        <dl class="dl-horizontal col-sm-9">
+        <dl class="dl-horizontal col-sm-8">
 
-        <dt id="game_type">Type:</dt><dd><%= game.escape("game_type") %> Game</dd>
+        <dt id="game_type">Type:</dt>
+        <dd>
+            <span class="show-details"><%= game.escape("game_type") %> Game</span>
+            <select 
+                class="form-control edit hidden"
+                name="game_type">
+                <option 
+                    value="Board" 
+                    <%= game.escape("game_type") === "Board" ? "selected" : "" %>>
+                        Board Game
+                </option>
+                <option 
+                    value="Video"
+                    <%= game.escape("game_type") === "Video" ? "selected" : "" %>>
+                        Video Game
+                </option>
+            </select>
+        </dd>
 
         <dt id="genres">Genres:</dt> 
-        <dd><ul class="list-unstyled show-details">
+        <dd>
+            <ul class="list-unstyled show-details">
             <% game.genres().each( function (genre) { %> 
                 <li><%= genre.escape("name") %></li>
             <% }) %>
-        </ul></dd>
+            </ul>
+
+            <a class="edit hidden btn btn-default btn-block dropdown-toggle" data-toggle="dropdown" href="#">
+                Select Genres
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-form" id="dropdown-genres" role="menu">
+                <% RabbleReviews.genres.each( function (genre) { %>
+                    <li>
+                        <label class="checkbox">
+                            <input 
+                                type="checkbox"
+                                class="genre"
+                                <% console.log(genre.escape("name")) %>
+                                <%= game.genres().findWhere({ name: genre.escape("name") }) ? "checked=\"true\"" : "" %>
+                                value="<%= genre.escape("name") %>">
+                                    <%= genre.escape("name") %>
+                        </label>
+                    </li>
+                <% }) %>
+            </ul>
+        </dd>
 
         <dt id="min-players">Min Players:</dt>
         <dd>

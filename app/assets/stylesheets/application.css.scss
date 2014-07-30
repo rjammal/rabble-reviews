@@ -216,5 +216,14 @@ body {
     height: auto;
 }
 
+#dropdown-genres {
+    overflow-y: auto;
+    max-height: 210px;
+    padding-top: 5px;
+    padding-left: 30px;
+    top: inherit;
+    left: inherit;
+}
+
 @import "bootstrap"
 

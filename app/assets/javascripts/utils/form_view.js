@@ -7,12 +7,13 @@ Backbone.FormView = Backbone.View.extend({
         }
     }, 
 
-    handleFile: function (event) {
+    handleFile: function (event, callback) {
         var file = event.currentTarget.files[0]; 
         var reader = new FileReader();
         var formView = this; 
         reader.onload = function (e) {
             formView.model.set("image", this.result);
+            callback && callback();
         }
         reader.readAsDataURL(file);
     }, 

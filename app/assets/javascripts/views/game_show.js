@@ -1,7 +1,8 @@
 RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
 
     initialize: function () {
-        this.listenTo(this.model, "sync change", this.render);
+
+        this.listenTo(this.model, "sync change:rating", this.render);
         var reviews = this.model.reviews()
         this.listenTo(reviews, "add", this.addReview);
         this.listenTo(reviews, "add", this.calculateRating);
@@ -10,6 +11,9 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
         this.model.reviews().each( function (review) {
             gameView.addReview(review);
         });
+
+        // saving state for if I need to cancel an image change
+        this.imagePlaceholder = this.model.get("image");
 
         var reviewNew = new RabbleReviews.Views.ReviewNew({ model: this.model });
         this.addSubview("#review-new", reviewNew);
@@ -23,7 +27,9 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
         "click #new-query": "blankSearch", 
         "click #edit-button": "edit", 
         "click #save-button": "save", 
-        "click #dropdown-genres": "genreSelect"
+        "click #cancel-button": "cancel",
+        "change .photo-upload": "handleFile",
+        "click #dropdown-genres": "genreSelect", 
     },
 
     blankSearch: function (event) {
@@ -38,8 +44,59 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
 
     save: function (event) {
         event.preventDefault();
+        this.model.set("game_type", this.$("#game-type").val());
+        this.model.set("min_players", this.$("#min-players").val());
+        this.model.set("max_players", this.$("#max-players").val());
+        this.model.set("year_released", this.$("#year-released").val());
+
+        var genres = [];
+        this.$(".genre").each( function (index, checkbox) {
+            if ($(checkbox).is(":checked")) {
+                genres.push($(checkbox).val());
+            }
+        });
+        this.model.set("genres", genres);
+
+        this.$("#save-button").text("Loading...").prop("disabled", "disabled");
+
+        // removing image when it's a missing image url
+        var image = this.model.get("image");
+        if (image.slice(0, 10) !== "data:image") {
+            this.model.set("image", "");
+        }
+
+        var editView = this;
+        this.model.save({}, {
+            success: function (model) {
+                editView.$("#save-button").text("Save").removeProp("disabled");
+                editView.imagePlaceholder = model.get("image");
+                this.$(".edit").addClass("hidden");
+                this.$(".show-details").removeClass("hidden");               
+            }, 
+            error: function (model, response) {
+                editView.$("#save-button").text("Save").removeProp("disabled");
+                Backbone.FormView.prototype.handleErrors.call(editView, response.responseJSON);
+            }
+        });
+
+        // replacing image in case removed
+        this.model.set("image", image);
+
+    },
+
+    cancel: function (event) {
+        event.preventDefault();
+        this.model.set("image", this.imagePlaceholder);
+        this.render();
         this.$(".edit").addClass("hidden");
         this.$(".show-details").removeClass("hidden");
+    },
+
+    handleFile: function (event) {
+        var view = this;
+        Backbone.FormView.prototype.handleFile.call(this, event, function () {
+            view.$('img').attr("src", view.model.get("image"));
+        });
     },
 
     genreSelect: function (event) {

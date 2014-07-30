@@ -10,12 +10,14 @@
 
 <div class="col-sm-6 center" id="game-show-main">
     <div class="row">
+        <div class="errors"></div>
         <div class="flex-container">
             <h2>
                 <%= game.escape("name") %>
                 <span>
                     <button class="btn btn-default show-details" id="edit-button">Edit</button>
                     <button class="btn btn-primary edit hidden" id="save-button">Save</button>
+                    <button class="btn btn-default edit hidden" id="cancel-button">Cancel</button>
                 </span>
             </h2>
             <h2><small>Rating: <%= game.escape("rating") || "None Yet"%></small></h2>
@@ -33,11 +35,12 @@
 
         <dl class="dl-horizontal col-sm-8">
 
-        <dt id="game_type">Type:</dt>
+        <dt>Type:</dt>
         <dd>
             <span class="show-details"><%= game.escape("game_type") %> Game</span>
             <select 
                 class="form-control edit hidden"
+                id="game-type"
                 name="game_type">
                 <option 
                     value="Board" 
@@ -71,7 +74,6 @@
                             <input 
                                 type="checkbox"
                                 class="genre"
-                                <% console.log(genre.escape("name")) %>
                                 <%= game.genres().findWhere({ name: genre.escape("name") }) ? "checked=\"true\"" : "" %>
                                 value="<%= genre.escape("name") %>">
                                     <%= genre.escape("name") %>
@@ -81,7 +83,7 @@
             </ul>
         </dd>
 
-        <dt id="min-players">Min Players:</dt>
+        <dt>Min Players:</dt>
         <dd>
             <span class="show-details"><%= game.escape("min_players") %></span>
             <input 
@@ -90,10 +92,11 @@
                 step="1"
                 min="1"
                 name="min_players"
+                id="min-players"
                 value="<%= game.escape("min_players") %>">
         </dd>
 
-        <dt id="max-players">Max Players:</dt>
+        <dt>Max Players:</dt>
         <dd>
             <span class="show-details"><%= game.escape("max_players") %></span>
             <input 
@@ -102,10 +105,11 @@
                 step="1"
                 min="1"
                 name="max_players"
+                id="max-players"
                 value="<%= game.escape("max_players") %>">
         </dd>
 
-        <dt id="year-released">Year Released:</dt>
+        <dt>Year Released:</dt>
         <dd>
             <span class="show"><%= game.escape("year_released") %></span>
             <input 
@@ -113,6 +117,7 @@
                 type="number"
                 step="1"
                 name="year_released"
+                id="year-released"
                 value="<%= game.escape("year_released") %>">
         </dd>
 

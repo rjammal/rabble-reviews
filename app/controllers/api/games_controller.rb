@@ -14,25 +14,41 @@ class Api::GamesController < ApplicationController
   end
 
   def create
-    game = Game.new(game_params)
+    @game = Game.new(game_params)
     puts game.image.url(:thumbnail)
 
     genres = params[:genres] || []
     # convert genre names to genre objects
     genres.each do |name| 
-      game.genres << Genre.find_by_name(name)
+      @game.genres << Genre.find_by_name(name)
     end
 
-    if game.save 
-      render json: game
+    if @game.save 
+      render :show
     else
-      render json: game.errors.full_messages, status: 422
+      render json: @game.errors.full_messages, status: 422
     end
   end
 
   def show
     @game = Game.find(params[:id])
     render :show
+  end
+
+  def update
+    @game = Game.find(params[:id])
+
+    genres = params[:genres] || []
+    @game.genres = []
+    genres.each do |name|
+      @game.genres << Genre.find_by_name(name)
+    end
+
+    if @game.update_attributes(game_params)
+      render :show
+    else 
+      render json: game.errors.full_messages, status: 422
+    end
   end
 
   private

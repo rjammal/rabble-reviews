@@ -20,12 +20,26 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
     id: "game-show",
 
     events: {
-        "click #new-query": "blankSearch"
+        "click #new-query": "blankSearch", 
+        "click #edit-button": "edit", 
+        "click #save-button": "save"
     },
 
     blankSearch: function (event) {
         delete RabbleReviews.sourceGames;
     }, 
+
+    edit: function (event) {
+        event.preventDefault();
+        this.$(".show-details").addClass("hidden");
+        this.$(".edit").removeClass("hidden");
+    }, 
+
+    save: function (event) {
+        event.preventDefault();
+        this.$(".edit").addClass("hidden");
+        this.$(".show-details").removeClass("hidden");
+    },
 
     render: function () {
         var renderedContent = this.template({ game: this.model });

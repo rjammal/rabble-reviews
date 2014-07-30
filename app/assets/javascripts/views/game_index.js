@@ -25,11 +25,11 @@ RabbleReviews.Views.GameIndex = Backbone.View.extend({
     }, 
 
     throttledScroll: function () {
-        return _.throttle(this.nextPage.bind(this), 200);
+        return _.throttle(this.nextPage.bind(this), 5000);
     }, 
 
     nextPage: function () {
-        if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+        if ($(window).scrollTop() > $(document).height() - $(window).height() - 1) {
             if (this.collection.pageNumber < this.collection.totalPages) {
                 this.collection.fetch({
                     data: { page: this.collection.pageNumber + 1, query: this.collection.query}, 

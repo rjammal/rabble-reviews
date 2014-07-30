@@ -14,6 +14,7 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
         if (RabbleReviews.sourceGames) {
             this.$("#query").val(RabbleReviews.sourceGames.lastQuery);
             this.$('.search-rows').addClass('searched');
+            this.$("#create-new-game").removeClass("hidden");
             var gameIndex = new RabbleReviews.Views.GameIndex({ collection: RabbleReviews.sourceGames });
             this.addSubview("#results", gameIndex);
         }

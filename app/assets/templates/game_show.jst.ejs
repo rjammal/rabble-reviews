@@ -11,7 +11,12 @@
 <div class="col-sm-6 center" id="game-show-main">
     <div class="row">
         <div class="flex-container">
-            <h2><%= game.escape("name") %></h2>
+            <h2>
+                <%= game.escape("name") %><span>
+                    <button class="btn btn-default show-details" id="edit-button">Edit</button>
+                    <button class="btn btn-primary edit hidden" id="save-button">Save</button>
+                </span>
+            </h2>
             <h2><small>Rating: <%= game.escape("rating") || "None Yet"%></small></h2>
         </div>
         <div class="game-image col-sm-3">
@@ -23,17 +28,46 @@
         <dt id="game_type">Type:</dt><dd><%= game.escape("game_type") %> Game</dd>
 
         <dt id="genres">Genres:</dt> 
-        <dd><ul class="list-unstyled">
+        <dd><ul class="list-unstyled show-details">
             <% game.genres().each( function (genre) { %> 
                 <li><%= genre.escape("name") %></li>
             <% }) %>
         </ul></dd>
 
-        <dt id="min-players">Min Players:</dt><dd><%= game.escape("min_players") %></dd>
+        <dt id="min-players">Min Players:</dt>
+        <dd>
+            <span class="show-details"><%= game.escape("min_players") %></span>
+            <input 
+                class="edit hidden form-control"
+                type="number"
+                step="1"
+                min="1"
+                name="min_players"
+                value="<%= game.escape("min_players") %>">
+        </dd>
 
-        <dt id="max-players">Max Players:</dt><dd><%= game.escape("max_players") %></dd>
+        <dt id="max-players">Max Players:</dt>
+        <dd>
+            <span class="show-details"><%= game.escape("max_players") %></span>
+            <input 
+                class="edit hidden form-control"
+                type="number"
+                step="1"
+                min="1"
+                name="max_players"
+                value="<%= game.escape("max_players") %>">
+        </dd>
 
-        <dt id="year-released">Year Released:</dt><dd><%= game.escape("year_released") %></dd>
+        <dt id="year-released">Year Released:</dt>
+        <dd>
+            <span class="show"><%= game.escape("year_released") %></span>
+            <input 
+                class="edit hidden form-control"
+                type="number"
+                step="1"
+                name="year_released"
+                value="<%= game.escape("year_released") %>">
+        </dd>
 
         </dl>
     </div>

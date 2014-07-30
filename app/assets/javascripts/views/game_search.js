@@ -22,19 +22,19 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
 
     search: function (event) {
         event.preventDefault();
-        var $searchbox = this.$("#search-box");
-        this.model.set("query", this.$("#query").val())
+        var $query = this.$("#query");
+        var games = new RabbleReviews.Collections.Games();
+        var gameIndex = new RabbleReviews.Views.GameIndex({ collection: games });
         var searchView = this;
-        this.model.save({}, {
-            success: function (model, response) {
+        games.fetch({
+            data: {query: $query.val(), page: 1}, 
+            parse: true, 
+            success: function () {
+                var $results = searchView.$("#results").empty();
+                searchView.addSubview("#results", gameIndex);
                 searchView.$(".search-errors").html("").removeClass("alert");
                 searchView.$("#create-new-game").removeClass("hidden");
                 searchView.$('.search-rows').addClass('searched');
-                var $results = searchView.$("#results").empty();
-                var games = new RabbleReviews.Collections.Games(response);
-                games.lastQuery = searchView.$("#query").val();
-                RabbleReviews.sourceGames = games;
-                var gameIndex = new RabbleReviews.Views.GameIndex({ collection: games });
                 searchView.addSubview("#results", gameIndex);
             }, 
             error: function (model, response) {
@@ -43,6 +43,8 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
                     searchView.$(".search-errors").html(text).addClass("alert alert-warning alert-dismissable");
                 }
             }
-        })
+        });
+        RabbleReviews.sourceGames = games;
+        RabbleReviews.sourceGames.lastQuery = $query.val();
     }
 });

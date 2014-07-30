@@ -3,6 +3,13 @@ RabbleReviews.Collections.Games = Backbone.Collection.extend({
 
     url: 'api/games', 
 
+    parse: function (response) {
+
+        this.pageNumber = parseInt(response.page_number);
+        this.totalPages = parseInt(response.total_pages);
+        return response.models;
+    },
+
     getOrFetch: function (id) {
         var game = this.get(id)
         if (!game) {

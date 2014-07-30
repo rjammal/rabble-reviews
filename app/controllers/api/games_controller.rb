@@ -3,12 +3,13 @@ class Api::GamesController < ApplicationController
   wrap_parameters include: [:name, :game_type, :min_players, :max_players, :year_released, :image, genres: []]
 
   def index
-    @games = Game.all
+    @page_number = params[:page] || 1
+    search = params[:query] || ""
+    @games = Game.page(params[:page]).search(search).includes(:reviews, :genres)
     render :index
   end
 
   def create
-    
     game = Game.new(game_params)
     puts game.image.url(:thumbnail)
 

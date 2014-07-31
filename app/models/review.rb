@@ -14,7 +14,7 @@
 class Review < ActiveRecord::Base
 
   validates :author, :game, :rating, :review_body, presence: true
-  validates :author_id, uniqueness: {scope: :game_id}
+  validates :author, uniqueness: {scope: :game}
 
   belongs_to :game
   belongs_to :author, foreign_key: :author_id, class_name: "User"

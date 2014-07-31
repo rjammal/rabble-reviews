@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'backbone-on-rails'
 
+gem 'faker'
+
 gem 'bootstrap-sass'
 
 gem 'figaro'

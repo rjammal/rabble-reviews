@@ -33,7 +33,8 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
     className: "search-center",
 
     events: {
-        "click #search-button": "search"
+        "click #search-button": "search", 
+        "change #advanced-search-wrapper-div": "parseSearch"
     }, 
 
     search: function (event) {
@@ -62,5 +63,26 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
         });
         RabbleReviews.sourceGames = games;
         RabbleReviews.sourceGames.lastQuery = $query.val();
+    }, 
+
+    parseSearch: function (event) {
+        event.preventDefault();
+        var $query = this.$('#query')
+        var currentTextArray = $query.val().split(" ");
+        var queryArray = [];
+        currentTextArray.forEach(function (str) {
+            if (str.indexOf(":") === -1) {
+                queryArray.push(str);
+            }
+        });
+        var propNames = ["min_rating", "max_rating", "min_reviews", "max_reviews", "game_type"]
+        propNames.forEach(function (prop) {
+            var value = this.$("#" + prop).val();
+            if (value && value !== "") {
+                queryArray.push(prop + ":" + value);
+            }
+        });
+
+        $query.val(queryArray.join(" "));
     }
 });

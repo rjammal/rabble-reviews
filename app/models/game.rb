@@ -87,7 +87,7 @@ class Game < ActiveRecord::Base
 
       with.keyword :max_rating do |values|
         clauses << "avg(rating) <= ? OR avg(rating) IS NULL"
-        arguments << "%#{values[0].to_f}%"
+        arguments << "#{values[0].to_f}"
       end
     end
 

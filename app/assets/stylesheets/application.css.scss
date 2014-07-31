@@ -164,21 +164,70 @@ body {
     bottom: 0;
 }
 
-#search-box {
-    height: 36px;
+#search-field-wrapper {
+    margin-right: 10px;
+    width: 90%;
+    display: inline-block;
+    position: relative;
+}
+
+#search-field-wrapper .form-group {
+    margin-bottom: 0px;
+}
+
+.row.advanced-search-row {
+    padding-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+/*#first-advanced-search-row {
+    margin-top: 10px;
+}*/
+
+.row.advanced-search-row:first-child {
+    margin-top: 7px;
+}
+
+.row.advanced-search-row:last-child {
+    margin-bottom: 7px;
+}
+
+.advanced-search-row label {
+    margin-top: 7px;
+}
+
+#advanced-search-wrapper-div {
+    padding-top: 20px;
+    border-left: thin solid #CCC;
+    border-right: thin solid #CCC;
+    border-bottom: thin solid #CCC;
+    position: relative;
+    top: -20px;
 }
 
 #query {
     border-radius: 20px;
-    margin-right: 10px;
-    width: 90%;
-    display: inline-block;
+    z-index: 1000;
+    position: relative;
 }
 
 #search-button {
     border-radius: 20px;
-    width: 35px;
-    padding-left: 10px;
+    z-index: 0;
+    width: 33px;
+    position: absolute;
+    top: 0px;
+    right: -50px;
+}
+
+#magnifying-glass {
+    left: -3px;
+}
+
+#search-relative {
+    position: relative;
+    height: 100%;
 }
 
 #results {

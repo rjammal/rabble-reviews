@@ -6,7 +6,7 @@ class Api::GamesController < ApplicationController
     begin 
       @page_number = params[:page] || 1
       @query = params[:query] || ""
-      @games = Game.page(params[:page]).search(@query).includes(:reviews, :genres)
+      @games = Game.page(params[:page]).search(@query).includes(:genres, :reviews => [:review_votes, :author])
       render :index
     rescue KeywordSearch::ParseError
       render json: "parse error", status: 422

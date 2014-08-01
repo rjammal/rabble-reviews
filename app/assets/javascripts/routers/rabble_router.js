@@ -26,6 +26,7 @@ RabbleReviews.Routers.RabbleRouter = Backbone.Router.extend({
         var session = new RabbleReviews.Models.Session({ id: 0 });
         session.destroy();
         delete RabbleReviews.currentUser;
+        delete RabbleReviews.sourceGames;
         Backbone.history.navigate("#", { trigger: true });
     },
 

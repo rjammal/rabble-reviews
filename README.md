@@ -2,7 +2,7 @@ Rabble
 ======
 
 
-ABOUT
+About
 -----
 
 Rabble is a site for people to share their thoughts on the games they love (and hate). It is 
@@ -11,7 +11,7 @@ game reviews by the masses.
 Visit the site at [www.rabble-reviews.com](www.rabble-reviews.com)
 
 
-FEATURES
+Features
 --------
 
 Rabble features detailed game information and advanced search capabilities allowing visitors 

@@ -35,7 +35,7 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
     events: {
         "click #search-button": "search", 
         "change #advanced-search-wrapper-div": "parseSearch", 
-        "click #caret": "toggleAdvanced"
+        "click #caret-up": "toggleAdvanced"
     }, 
 
     search: function (event) {
@@ -89,6 +89,7 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
 
     toggleAdvanced: function (event) {
         event.preventDefault(); 
-        this.$("#caret").toggleClass("flipped");
+        this.$("#caret-up").toggleClass("flipped");
+        this.$("#advanced-search-wrapper-div").toggleClass("advanced-toggle");
     }
 });

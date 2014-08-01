@@ -208,8 +208,22 @@ body {
 
 #query {
     border-radius: 20px;
-    z-index: 1000;
+    z-index: 10;
     position: relative;
+}
+
+#caret {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    z-index: 20;
+}
+
+.flipped {
+    transform: rotateY(180deg);
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
 }
 
 #search-button {

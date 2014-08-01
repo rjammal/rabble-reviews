@@ -38,6 +38,7 @@ RabbleReviews.Views.GameShow = Backbone.CompositeView.extend({
 
     edit: function (event) {
         event.preventDefault();
+        this.imagePlaceholder = this.model.get("image");
         this.$(".show-details").addClass("hidden");
         this.$(".edit").removeClass("hidden");
     }, 

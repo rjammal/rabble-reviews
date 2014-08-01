@@ -49,11 +49,13 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
             parse: true, 
             success: function () {
                 var $results = searchView.$("#results").empty();
-                searchView.addSubview("#results", gameIndex);
                 searchView.$(".search-errors").html("").removeClass("alert");
                 searchView.$("#create-new-game").removeClass("hidden");
+                searchView.addSubview("#results", gameIndex);
                 searchView.$('.search-rows').addClass('searched');
                 searchView.addSubview("#results", gameIndex);
+                this.$("#advanced-search-wrapper-div").addClass("advanced-toggle-down");
+                this.$("#advanced-search-wrapper-div").removeClass("advanced-toggle-up");
             }, 
             error: function (model, response) {
                 if (response.status === 422) {
@@ -90,6 +92,7 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
     toggleAdvanced: function (event) {
         event.preventDefault(); 
         this.$("#caret-up").toggleClass("flipped");
-        this.$("#advanced-search-wrapper-div").toggleClass("advanced-toggle");
+        this.$("#advanced-search-wrapper-div").toggleClass("advanced-toggle-up");
+        this.$("#advanced-search-wrapper-div").toggleClass("advanced-toggle-down");
     }
 });

@@ -45,6 +45,8 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
         var gameIndex = new RabbleReviews.Views.GameIndex({ collection: games });
         this.$(".spinner").removeClass("hidden");
         this.$("#results").empty();
+        this.$("#advanced-search-wrapper-div").addClass("advanced-toggle-down");
+        this.$("#advanced-search-wrapper-div").removeClass("advanced-toggle-up");
         var searchView = this;
         games.fetch({
             data: {query: $query.val(), page: 1}, 
@@ -56,8 +58,6 @@ RabbleReviews.Views.GameSearch = Backbone.CompositeView.extend({
                 searchView.addSubview("#results", gameIndex);
                 searchView.$('.search-rows').addClass('searched');
                 searchView.addSubview("#results", gameIndex);
-                this.$("#advanced-search-wrapper-div").addClass("advanced-toggle-down");
-                this.$("#advanced-search-wrapper-div").removeClass("advanced-toggle-up");
             }, 
             error: function (model, response) {
                 searchView.$(".spinner").addClass("hidden");

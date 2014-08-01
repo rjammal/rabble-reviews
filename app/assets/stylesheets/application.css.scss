@@ -203,6 +203,8 @@ body {
     height: 100%;
     width: 100%;
     top: -20px;
+    background-color: grey;
+    color: white;
 }
 
 .advanced-toggle-down {
@@ -231,10 +233,23 @@ body {
 
 #caret-up, #caret-down {
     position: absolute;
-    top: 10px;
-    right: 15px;
-    z-index: 20;
+    right: 0;
+    top: 0;
+    z-index: 15;
+    border-left: thin solid grey;
+    bottom: 0;
+    left: 567px;
+    padding: 7px;
+    background-color: grey;
+    color: white;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
+
+#search-bar {
+    position: relative;
+}
+
 
 
 
